@@ -8,6 +8,7 @@ import Schedule from './components/Schedule';
 import Partners from './components/Partners';
 import Footer from './components/Footer';
 import BookTickets from './components/BookTickets';
+import SeatSelection from './components/SeatSelection';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/speakers" element={<Speakers />} />
         <Route path="/book-tickets" element={<BookTickets />} />
+       <Route path='/select-seats' element={<SeatSelection/>} />
        {/* Add routes for Schedule and Partners */}
       </Routes>
       <Footer />
