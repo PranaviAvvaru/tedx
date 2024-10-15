@@ -7,6 +7,7 @@ import Speakers from './components/Speakers';
 import Schedule from './components/Schedule';
 import Partners from './components/Partners';
 import Footer from './components/Footer';
+import BookTickets from './components/BookTickets';
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
         <Route path="/" element={<><Hero /><About /><Speakers /><Schedule /><Partners /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/speakers" element={<Speakers />} />
-        {/* Add routes for Schedule and Partners */}
+        <Route path="/book-tickets" element={<BookTickets />} />
+       {/* Add routes for Schedule and Partners */}
       </Routes>
       <Footer />
     </Router>
