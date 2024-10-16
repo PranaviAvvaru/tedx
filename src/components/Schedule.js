@@ -1,9 +1,5 @@
 import React from 'react';
 
-
-
-
-
 const Schedule = () => {
   return (
     <section className="bg-black text-white py-12 p-3 relative"> {/* Removed z-0, added relative */}
