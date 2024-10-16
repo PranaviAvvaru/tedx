@@ -16,8 +16,8 @@ const Hero = () => {
         animate={{ opacity: 1, translateY: 0 }} // Animation state
         transition={{ duration: 0.5 }} // Animation duration
       >
-        <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">TEDx [College Name]</h1>
-        <p className="text-xl mb-6 drop-shadow-md">Ideas Worth Spreading</p>
+        <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">TEDx SV University</h1>
+        <p className="text-xl mb-6 drop-shadow-md">Unchated Waters</p>
         <Link to="/select-seats" className="bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg transform hover:scale-105">
           Register Now
         </Link>
