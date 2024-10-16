@@ -7,7 +7,6 @@ import Speakers from './components/Speakers';
 import Schedule from './components/Schedule';
 import Partners from './components/Partners';
 import Footer from './components/Footer';
-import BookTickets from './components/BookTickets';
 import SeatSelection from './components/SeatSelection';
 
 const App = () => {
@@ -21,7 +20,6 @@ const App = () => {
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/schedule" element={<Schedule />} /> {/* Add this line for Schedule */}
           <Route path="/partners" element={<Partners />} /> {/* Add this line for Partners */}
-          <Route path="/book-tickets" element={<BookTickets />} />
           <Route path="/select-seats" element={<SeatSelection />} />
         </Routes>
       </main>
