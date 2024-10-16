@@ -1,4 +1,5 @@
-import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   return (
@@ -6,18 +7,20 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         {/* Social Media Links */}
         <div className="social-media flex space-x-6 mb-6 md:mb-0">
-          {/* Uncomment and replace with actual social media icons */}
-          {/* <a href="#"><img src="path-to-social-icon" alt="Facebook" className="w-6 h-6" /></a> */}
-          {/* <a href="#"><img src="path-to-social-icon" alt="Instagram" className="w-6 h-6" /></a> */}
-          {/* <a href="#"><img src="path-to-social-icon" alt="Twitter" className="w-6 h-6" /></a> */}
-          <a href="#" className="hover:text-red-500">Facebook</a>
-          <a href="#" className="hover:text-red-500">Instagram</a>
-          <a href="#" className="hover:text-red-500">Twitter</a>
+          <a href="#" className="hover:text-red-500">
+            <FontAwesomeIcon icon={faFacebook} className="h-6 w-6" />
+          </a>
+          <a href="#" className="hover:text-red-500">
+            <FontAwesomeIcon icon={faInstagram} className="h-6 w-6" />
+          </a>
+          <a href="#" className="hover:text-red-500">
+            <FontAwesomeIcon icon={faTwitter} className="h-6 w-6" />
+          </a>
         </div>
 
         {/* Copyright Section */}
         <p className="text-center md:text-left text-sm">
-          &copy; 2024 TEDx [College Name]. All Rights Reserved.
+          &copy; 2024 TEDx SV University. All Rights Reserved.
         </p>
       </div>
     </footer>

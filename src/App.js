@@ -14,14 +14,17 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<><Hero /><About /><Speakers /><Schedule /><Partners /></>} />
-        <Route path="/about" element={<About />} />
-        <Route path="/speakers" element={<Speakers />} />
-        <Route path="/book-tickets" element={<BookTickets />} />
-       <Route path='/select-seats' element={<SeatSelection/>} />
-       {/* Add routes for Schedule and Partners */}
-      </Routes>
+      <main className="pt-16"> {/* Add padding to avoid overlap with fixed header */}
+        <Routes>
+          <Route path="/" element={<><Hero /><About /><Speakers /><Schedule /><Partners /></>} />
+          <Route path="/about" element={<About />} />
+          <Route path="/speakers" element={<Speakers />} />
+          <Route path="/schedule" element={<Schedule />} /> {/* Add this line for Schedule */}
+          <Route path="/partners" element={<Partners />} /> {/* Add this line for Partners */}
+          <Route path="/book-tickets" element={<BookTickets />} />
+          <Route path="/select-seats" element={<SeatSelection />} />
+        </Routes>
+      </main>
       <Footer />
     </Router>
   );

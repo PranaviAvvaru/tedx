@@ -1,10 +1,14 @@
 import React from 'react';
+import randomImage1 from '../assets/images/random.jpg'; // Import image
+import randomImage2 from '../assets/images/random.jpg'; // Import another image
 
 const Partners = () => {
   const partners = [
-    { name: "Partner 1", img: "/path-to-partner-logo.jpg" },
-    { name: "Partner 2", img: "/path-to-partner-logo.jpg" },
-    // Add more partners here as needed
+    { name: "Partner 1", img: randomImage1 },
+    { name: "Partner 2", img: randomImage2 },
+    { name: "Partner 3", img: randomImage1 },
+    { name: "Partner 4", img: randomImage2 },
+    
   ];
 
   return (
