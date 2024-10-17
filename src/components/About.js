@@ -1,5 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import teamImage1 from '../assets/images/random.jpg'; // Replace with actual images
+import teamImage2 from '../assets/images/random.jpg';
+import teamImage3 from '../assets/images/random.jpg';
+import teamImage4 from '../assets/images/random.jpg';
+import teamImage5 from '../assets/images/random.jpg';
+
+const teamImages = [teamImage1, teamImage2, teamImage3, teamImage4, teamImage5];
 
 const About = () => {
   return (
@@ -67,12 +74,37 @@ const About = () => {
           </div>
         </motion.div>
 
+        {/* Team Section with Scrollable Images */}
+        <motion.div 
+          className="mt-16"
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 1.5, delay: 0.8 }}
+        >
+          <h3 className="text-2xl font-semibold mb-8">Meet Our Team</h3>
+          
+          {/* Scrollable Image Section */}
+          <div className="overflow-hidden relative w-full">
+            <div className="scroll-container flex items-center justify-start">
+              {/* Repeat team images */}
+              {[...teamImages, ...teamImages].map((img, index) => (
+                <img 
+                  key={index} 
+                  src={img} 
+                  alt={`Team Member ${index + 1}`} 
+                  className="h-32 w-32 md:h-48 md:w-48 object-cover rounded-full mx-4 shadow-lg"
+                />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
         {/* Call to Action (Optional) */}
         <motion.div 
           className="mt-12"
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
-          transition={{ duration: 1.5, delay: 0.8 }}
+          transition={{ duration: 1.5, delay: 1 }}
         >
           <p className="text-lg font-light italic mb-6">
             Ready to explore the future with us?
