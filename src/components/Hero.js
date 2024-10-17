@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import tedImage from '../assets/images/ted.jpg';
 
 const Hero = () => {
   return (
@@ -8,7 +9,7 @@ const Hero = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url(/path-to-background-image.jpg)' }}
+        style={{ backgroundImage: `url(${tedImage})` }}
         aria-hidden="true" // This element is purely decorative
       >
         <div className="bg-black bg-opacity-50 h-full w-full"></div>
