@@ -14,7 +14,7 @@ const About = () => {
       <div className="container mx-auto text-center">
         {/* Section Title */}
         <motion.h2 
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-wide"
+          className="text-4xl text-red-600 md:text-5xl lg:text-6xl font-bold mb-8 tracking-wide"
           initial={{ opacity: 0, y: 50 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, ease: 'easeInOut' }}
@@ -57,17 +57,17 @@ const About = () => {
           animate={{ opacity: 1 }} 
           transition={{ duration: 1.5, delay: 0.6 }}
         >
-          <h3 className="text-2xl font-semibold mb-4">Our Core Values</h3>
+          <h3 className="text-3xl text-red-600 font-semibold mb-4">Our Core Values</h3>
           <div className="flex flex-col md:flex-row md:justify-center gap-8">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <div className="bg-gray-900 border border-white p-6 rounded-lg shadow-lg">
               <h4 className="text-xl font-semibold mb-2">Innovation</h4>
               <p className="text-gray-400">We push the boundaries of what’s possible, exploring new ways to solve old problems.</p>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <div className="bg-gray-900 border border-white p-6 rounded-lg shadow-lg">
               <h4 className="text-xl font-semibold mb-2">Collaboration</h4>
               <p className="text-gray-400">Ideas are better when shared. We foster a collaborative environment where voices unite.</p>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <div className="bg-gray-900 border border-white p-6 rounded-lg shadow-lg">
               <h4 className="text-xl font-semibold mb-2">Impact</h4>
               <p className="text-gray-400">Ideas that matter. We believe in actionable outcomes that create real-world change.</p>
             </div>

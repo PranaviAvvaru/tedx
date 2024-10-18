@@ -23,7 +23,7 @@ const Hero = () => {
         transition={{ duration: 0.5 }} // Animation duration
       >
         {/* Adjusted font sizes for different screen sizes */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-lg">
+        <h1 className="text-3xl  sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-lg">
           TEDx SV University
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl mb-6 drop-shadow-md">
