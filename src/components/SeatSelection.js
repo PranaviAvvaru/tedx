@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const SeatSelection = () => {
   // Sample seat layout (1 = booked, 0 = available)
-  const initialSeats = Array(5).fill(Array(10).fill(0)); // 5 rows, 10 seats each
+  const initialSeats = Array(5).fill(Array(9).fill(0)); // 5 rows, 10 seats each
   const [seats, setSeats] = useState(initialSeats);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -47,15 +47,15 @@ const SeatSelection = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen p-3 text-white">
-      <h2 className="text-3xl font-bold text-center mb-8 text-red-600">Select Your Seats</h2>
-      <div className="grid gap-4">
+    <div className="bg-black min-h-screen p-3 text-white overflow-x-hidden">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-red-600">Select Your Seats</h2>
+      <div className="grid gap-4 overflow-hidden">
         {seats.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex justify-center space-x-4">
+          <div key={rowIndex} className="flex justify-center space-x-2 md:space-x-4 flex-wrap max-w-full">
             {row.map((seat, seatIndex) => (
               <button
                 key={seatIndex}
-                className={`w-10 h-10 text-white rounded-md transition duration-300 ease-in-out 
+                className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white rounded-md transition duration-300 ease-in-out 
                 ${selectedSeats.includes(`${rowIndex}-${seatIndex}`) ? 'bg-red-600' : 
                 seat === 1 ? 'bg-black cursor-not-allowed text-red-600' : 'bg-gray-700 hover:bg-gray-500 hover:scale-110 transform'}`}
                 onClick={() => seat === 1 ? null : toggleSeat(rowIndex, seatIndex)}
@@ -70,18 +70,19 @@ const SeatSelection = () => {
 
       {/* Display total price */}
       <div className="text-center mt-6">
-        <h3 className="text-2xl">Total Price: ${totalPrice}</h3>
+        <h3 className="text-xl md:text-2xl">Total Price: ${totalPrice}</h3>
       </div>
 
       {/* Payment button */}
       <button
         onClick={handlePayment}
-        className="block bg-red-600 text-white font-semibold py-2 px-4 rounded mt-8 mx-auto hover:bg-red-700 transition-all ease-in-out"
+        className="block bg-red-600 text-white font-semibold py-2 px-4 rounded mt-8 mx-auto hover:bg-red-700 transition-all ease-in-out 
+        w-full sm:w-auto text-center"
         disabled={selectedSeats.length === 0}
       >
         Proceed to Payment
       </button>
-      
+
       {/* PayPal Button Container */}
       <div className="pay-btn mt-6"></div>
     </div>
