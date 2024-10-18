@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SeatSelection = () => {
   // Sample seat layout (1 = booked, 0 = available)
@@ -17,37 +17,43 @@ const SeatSelection = () => {
     );
 
     setSeats(updatedSeats);
-    
+
     if (selectedSeats.includes(`${row}-${seat}`)) {
-      setSelectedSeats(selectedSeats.filter(seat => seat !== `${row}-${seat}`));
+      setSelectedSeats(
+        selectedSeats.filter((seat) => seat !== `${row}-${seat}`)
+      );
     } else {
       setSelectedSeats([...selectedSeats, `${row}-${seat}`]);
     }
   };
 
   const handlePayment = () => {
-    window.paypal.Buttons({
-      createOrder: (data, actions) => {
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: (selectedSeats.length * 50).toFixed(2), // Assuming $50 per ticket
-            },
-          }],
-        });
-      },
-      onApprove: async (data, actions) => {
-        const order = await actions.order.capture();
-        alert(`Payment successful for seats: ${selectedSeats.join(', ')}`);
-        // Here you would finalize the seat booking, perhaps updating the seats state
-      },
-      onError: (err) => {
-        console.error(err);
-        alert('Payment failed. Please try again.');
-      }
-    }).render('.pay-btn');
+    window.paypal
+      .Buttons({
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: (selectedSeats.length * 50).toFixed(2), // Assuming $50 per ticket
+                },
+              },
+            ],
+          });
+        },
+        onApprove: async (data, actions) => {
+          const order = await actions.order.capture();
+          alert(`Payment successful for seats: ${selectedSeats.join(", ")}`);
+          // Here you would finalize the seat booking, perhaps updating the seats state
+        },
+        onError: (err) => {
+          console.error(err);
+          alert("Payment failed. Please try again.");
+        },
+      })
+      .render(".pay-btn");
   };
-  
+
   return (
     <div className="container mx-auto mt-8 p-3">
       <h2 className="text-3xl font-bold text-center mb-8">Select Your Seats</h2>
@@ -57,11 +63,23 @@ const SeatSelection = () => {
             {row.map((seat, seatIndex) => (
               <button
                 key={seatIndex}
-                className={`w-10 h-10 text-white rounded-md transition duration-300 ease-in-out ${seat === 1 ? 'bg-red-600 cursor-not-allowed' : selectedSeats.includes(`${rowIndex}-${seatIndex}`) ? 'bg-yellow-400' : 'bg-green-600 hover:bg-green-700'}`}
-                onClick={() => seat === 1 ? null : toggleSeat(rowIndex, seatIndex)}
+                className={`w-10 h-10 text-white rounded-md transition duration-300 ease-in-out ${
+                  seat === 1
+                    ? "bg-red-600 cursor-not-allowed"
+                    : selectedSeats.includes(`${rowIndex}-${seatIndex}`)
+                    ? "bg-yellow-400"
+                    : "bg-green-600 hover:bg-green-700"
+                }`}
+                onClick={() =>
+                  seat === 1 ? null : toggleSeat(rowIndex, seatIndex)
+                }
                 disabled={seat === 1} // Disable button for booked seats
               >
-                {seat === 1 ? 'X' : selectedSeats.includes(`${rowIndex}-${seatIndex}`) ? '✔' : ''}
+                {seat === 1
+                  ? "X"
+                  : selectedSeats.includes(`${rowIndex}-${seatIndex}`)
+                  ? "✔"
+                  : ""}
               </button>
             ))}
           </div>
@@ -76,6 +94,6 @@ const SeatSelection = () => {
       </button>
     </div>
   );
-}
+};
 
 export default SeatSelection;
