@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  background-color: black;
-}
+
 
 @keyframes fadeInUp {
     0% {

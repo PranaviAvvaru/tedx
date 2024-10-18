@@ -47,7 +47,7 @@ const SeatSelection = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 p-3 text-white">
+    <div className="bg-black min-h-screen p-3 text-white">
       <h2 className="text-3xl font-bold text-center mb-8 text-red-600">Select Your Seats</h2>
       <div className="grid gap-4">
         {seats.map((row, rowIndex) => (

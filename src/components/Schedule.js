@@ -30,7 +30,7 @@ const Schedule = () => {
           <div className="timeline-line absolute w-1 bg-red-500 h-full top-0 left-1/2 transform -translate-x-1/2 z-0"></div>
 
           {/* Timeline Items */}
-          <ul className="relative z-10">
+          <ul className="relative z-0">
             {scheduleItems.map((item, index) => (
               <li key={index} className={`timeline-item mb-8 flex justify-between items-center w-full`}>
                 {index % 2 === 0 ? (
