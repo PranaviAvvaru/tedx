@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { FaMusic, FaUserAlt, FaCoffee } from 'react-icons/fa';
-import { motion } from 'framer-motion';
 
 const Schedule = () => {
   const scheduleItems = [
@@ -21,42 +20,6 @@ const Schedule = () => {
     { title: "Music Concert", time: "5:30 PM - 7:30 PM", icon: <FaMusic /> },
   ];
 
-  const [visibleItems, setVisibleItems] = useState(Array(scheduleItems.length).fill(false));
-  const itemRefs = useRef([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const index = itemRefs.current.indexOf(entry.target);
-        if (entry.isIntersecting) {
-          // Set visible only when the item is intersecting
-          setVisibleItems((prev) => {
-            const newVisibleItems = [...prev];
-            newVisibleItems[index] = true; // Mark this item as visible
-            return newVisibleItems;
-          });
-        } else {
-          // Reset visibility when the item is out of view
-          setVisibleItems((prev) => {
-            const newVisibleItems = [...prev];
-            newVisibleItems[index] = false; // Mark this item as not visible
-            return newVisibleItems;
-          });
-        }
-      });
-    });
-
-    itemRefs.current.forEach((item) => {
-      if (item) {
-        observer.observe(item);
-      }
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [scheduleItems]);
-
   return (
     <section className="bg-black text-white py-12 p-3 relative">
       <div className="container mx-auto flex flex-col justify-center h-full">
@@ -67,16 +30,9 @@ const Schedule = () => {
           <div className="timeline-line absolute w-1 bg-red-500 h-full top-0 left-1/2 transform -translate-x-1/2 z-0"></div>
 
           {/* Timeline Items */}
-          <ul className="relative z-0">
+          <ul className="relative z-10">
             {scheduleItems.map((item, index) => (
-              <motion.li
-                key={index}
-                ref={(el) => (itemRefs.current[index] = el)} // Assign ref to each item
-                className={`timeline-item mb-8 flex justify-between items-center w-full`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} // Start from left for even indices and right for odd indices
-                animate={visibleItems[index] ? { opacity: 1, x: 0 } : {}} // Animate when visible
-                transition={{ duration: 0.5 }} // Animation duration
-              >
+              <li key={index} className={`timeline-item mb-8 flex justify-between items-center w-full`}>
                 {index % 2 === 0 ? (
                   <>
                     <div className="order-1 w-5/12"></div>
@@ -96,7 +52,7 @@ const Schedule = () => {
                     <div className="order-1 w-5/12"></div>
                   </>
                 )}
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
