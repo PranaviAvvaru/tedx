@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const SeatSelection = () => {
   // Sample seat layout (1 = booked, 0 = available)
@@ -16,9 +16,7 @@ const SeatSelection = () => {
   const toggleSeat = (row, seat) => {
     if (selectedSeats.includes(`${row}-${seat}`)) {
       // Deselect the seat
-      setSelectedSeats(
-        selectedSeats.filter((selected) => selected !== `${row}-${seat}`)
-      );
+      setSelectedSeats(selectedSeats.filter(selected => selected !== `${row}-${seat}`));
     } else {
       // Select the seat
       setSelectedSeats([...selectedSeats, `${row}-${seat}`]);
@@ -26,37 +24,31 @@ const SeatSelection = () => {
   };
 
   const handlePayment = () => {
-    window.paypal
-      .Buttons({
-        createOrder: (data, actions) => {
-          return actions.order.create({
-            purchase_units: [
-              {
-                amount: {
-                  value: totalPrice.toFixed(2), // Total price for selected seats
-                },
-              },
-            ],
-          });
-        },
-        onApprove: async (data, actions) => {
-          const order = await actions.order.capture();
-          alert(`Payment successful for seats: ${selectedSeats.join(", ")}`);
-          // Here you would finalize the seat booking, perhaps updating the seats state
-        },
-        onError: (err) => {
-          console.error(err);
-          alert("Payment failed. Please try again.");
-        },
-      })
-      .render(".pay-btn");
+    window.paypal.Buttons({
+      createOrder: (data, actions) => {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: totalPrice.toFixed(2), // Total price for selected seats
+            },
+          }],
+        });
+      },
+      onApprove: async (data, actions) => {
+        const order = await actions.order.capture();
+        alert(`Payment successful for seats: ${selectedSeats.join(', ')}`);
+        // Here you would finalize the seat booking, perhaps updating the seats state
+      },
+      onError: (err) => {
+        console.error(err);
+        alert('Payment failed. Please try again.');
+      }
+    }).render('.pay-btn');
   };
 
   return (
     <div className="bg-black min-h-screen p-3 text-white">
-      <h2 className="text-3xl font-bold text-center mb-8 text-red-600">
-        Select Your Seats
-      </h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-red-600">Select Your Seats</h2>
       <div className="grid gap-4">
         {seats.map((row, rowIndex) => (
           <div key={rowIndex} className="flex justify-center space-x-4">
@@ -64,23 +56,12 @@ const SeatSelection = () => {
               <button
                 key={seatIndex}
                 className={`w-10 h-10 text-white rounded-md transition duration-300 ease-in-out 
-                ${
-                  selectedSeats.includes(`${rowIndex}-${seatIndex}`)
-                    ? "bg-red-600"
-                    : seat === 1
-                    ? "bg-black cursor-not-allowed text-red-600"
-                    : "bg-gray-700 hover:bg-gray-500 hover:scale-110 transform"
-                }`}
-                onClick={() =>
-                  seat === 1 ? null : toggleSeat(rowIndex, seatIndex)
-                }
+                ${selectedSeats.includes(`${rowIndex}-${seatIndex}`) ? 'bg-red-600' : 
+                seat === 1 ? 'bg-black cursor-not-allowed text-red-600' : 'bg-gray-700 hover:bg-gray-500 hover:scale-110 transform'}`}
+                onClick={() => seat === 1 ? null : toggleSeat(rowIndex, seatIndex)}
                 disabled={seat === 1} // Disable button for booked seats
               >
-                {seat === 1
-                  ? "X"
-                  : selectedSeats.includes(`${rowIndex}-${seatIndex}`)
-                  ? "✔"
-                  : ""}
+                {seat === 1 ? 'X' : selectedSeats.includes(`${rowIndex}-${seatIndex}`) ? '✔' : ''}
               </button>
             ))}
           </div>
@@ -100,11 +81,11 @@ const SeatSelection = () => {
       >
         Proceed to Payment
       </button>
-
+      
       {/* PayPal Button Container */}
       <div className="pay-btn mt-6"></div>
     </div>
   );
-};
+}
 
 export default SeatSelection;

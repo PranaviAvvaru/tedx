@@ -42,7 +42,8 @@ const Speakers = () => {
           {speakers.map((speaker, index) => (
             <motion.div
               key={index}
-              className=" relative  overflow-hidden transition-shadow  duration-300 rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600 h-96"
+              className=" relative  overflow-hidden transition-shadow  duration-300 rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600 
+              h-96 "
               initial={{ opacity: 0, translateY: 20 }} // Initial state for animation
               animate={{ opacity: 1, translateY: 0 }} // Animation state
               transition={{ duration: 0.5, delay: index * 0.1 }} // Delay based on index for staggered effect
