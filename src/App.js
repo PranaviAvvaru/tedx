@@ -15,7 +15,7 @@ const App = () => {
       <Header />
       <main className="pt-16"> {/* Add padding to avoid overlap with fixed header */}
         <Routes>
-          <Route path="/" element={<><Hero /><About /><Speakers /><Schedule /><Partners /></>} />
+          <Route path="/" element={<><Hero /><Speakers /><Schedule /><Partners /><About /></>} />
           <Route path="/about" element={<About />} />
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/schedule" element={<Schedule />} /> {/* Add this line for Schedule */}

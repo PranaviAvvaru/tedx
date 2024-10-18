@@ -34,15 +34,15 @@ const Speakers = () => {
   ];
 
   return (
-    <section className="bg-black text-white py-12 p-3">
+    <section className="bg-black text-white py-12 px-3">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold mb-8">Meet Our Speakers</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-8">
+        <div className="grid   grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5  gap-12">
           {speakers.map((speaker, index) => (
             <motion.div
               key={index}
-              className=" relative  overflow-hidden transition-shadow  duration-300 rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600"
+              className=" relative  overflow-hidden transition-shadow  duration-300 rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600 h-96"
               initial={{ opacity: 0, translateY: 20 }} // Initial state for animation
               animate={{ opacity: 1, translateY: 0 }} // Animation state
               transition={{ duration: 0.5, delay: index * 0.1 }} // Delay based on index for staggered effect
@@ -50,11 +50,11 @@ const Speakers = () => {
               <img
                 src={speaker.img}
                 alt={speaker.name}
-                className="w-full h-full  object-cover rounded-lg mb-4 transition-transform group-hover:scale-125 duration-200 "
+                className=" w-full h-full object-cover rounded-lg mb-2 transition-transform group-hover:scale-110 duration-200 "
               />
               <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75 to-transparent ">
                 <div className="p-4 text-white  text-center  group-hover:bg-gradient-to-br w-full">
-                  <h3 className=" text-xl font-xl mb-2 group-hover:font-semibold ">
+                  <h3 className=" text-xl font-xl mb-4 group-hover:font-semibold ">
                     {speaker.name}
                   </h3>
                   <hr className="invisible  group-hover:visible" />

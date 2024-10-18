@@ -1,155 +1,59 @@
 import React from 'react';
-
-
-
-
+import { FaMusic, FaUserAlt, FaCoffee } from 'react-icons/fa';
 
 const Schedule = () => {
+  const scheduleItems = [
+    { title: "Welcome", time: "9:00 AM - 9:40 AM", icon: <FaUserAlt /> },
+    { title: "Speaker 1: [Speaker Name]", time: "9:40 AM - 10:10 AM", icon: <FaUserAlt /> },
+    { title: "Speaker 2: [Speaker Name]", time: "10:10 AM - 10:40 AM", icon: <FaUserAlt /> },
+    { title: "Speaker 3: [Speaker Name]", time: "10:40 AM - 11:10 AM", icon: <FaUserAlt /> },
+    { title: "Break", time: "11:10 AM - 11:40 AM", icon: <FaCoffee /> },
+    { title: "Speaker 4: [Speaker Name]", time: "11:40 AM - 12:10 PM", icon: <FaUserAlt /> },
+    { title: "Speaker 5: [Speaker Name]", time: "12:10 PM - 12:40 PM", icon: <FaUserAlt /> },
+    { title: "Lunch Break", time: "12:40 PM - 2:10 PM", icon: <FaCoffee /> },
+    { title: "Speaker 6: [Speaker Name]", time: "2:10 PM - 2:40 PM", icon: <FaUserAlt /> },
+    { title: "Speaker 7: [Speaker Name]", time: "2:40 PM - 3:10 PM", icon: <FaUserAlt /> },
+    { title: "Break", time: "3:10 PM - 3:40 PM", icon: <FaCoffee /> },
+    { title: "Speaker 8: [Speaker Name]", time: "3:40 PM - 4:20 PM", icon: <FaUserAlt /> },
+    { title: "Speaker 9: [Speaker Name]", time: "4:20 PM - 5:00 PM", icon: <FaUserAlt /> },
+    { title: "Closing Remarks", time: "5:00 PM - 5:30 PM", icon: <FaUserAlt /> },
+    { title: "Music Concert", time: "5:30 PM - 7:30 PM", icon: <FaMusic /> },
+  ];
+
   return (
-    <section className="bg-black text-white py-12 p-3 relative"> {/* Removed z-0, added relative */}
+    <section className="bg-black text-white py-12 p-3 relative">
       <div className="container mx-auto flex flex-col justify-center h-full">
         <h2 className="text-4xl font-bold mb-8 text-center">TEDx Event Schedule</h2>
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="timeline-line absolute w-1 bg-red-500 h-full top-0 left-1/2 transform -translate-x-1/2 z-0"></div> {/* Keep z-0 to maintain the line below items */}
+          <div className="timeline-line absolute w-1 bg-red-500 h-full top-0 left-1/2 transform -translate-x-1/2 z-0"></div>
 
           {/* Timeline Items */}
-          <ul className="relative z-10"> {/* Higher z-index for the timeline items */}
-            {/* Welcome */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Welcome</h3>
-                <p className="mt-1 text-sm">9:00 AM - 9:40 AM</p>
-              </div>
-            </li>
-
-            {/* Speaker 1 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 1: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">9:40 AM - 10:10 AM</p>
-              </div>
-              <div className="order-1 w-5/12"></div>
-            </li>
-
-            {/* Speaker 2 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 2: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">10:10 AM - 10:40 AM</p>
-              </div>
-            </li>
-
-            {/* Speaker 3 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 3: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">10:40 AM - 11:10 AM</p>
-              </div>
-              <div className="order-1 w-5/12"></div>
-            </li>
-
-            {/* Break */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Break</h3>
-                <p className="mt-1 text-sm">11:10 AM - 11:40 AM</p>
-              </div>
-            </li>
-
-            {/* Speaker 4 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 4: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">11:40 AM - 12:10 PM</p>
-              </div>
-              <div className="order-1 w-5/12"></div>
-            </li>
-
-            {/* Speaker 5 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 5: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">12:10 PM - 12:40 PM</p>
-              </div>
-            </li>
-
-            {/* Lunch Break */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Lunch Break</h3>
-                <p className="mt-1 text-sm">12:40 PM - 2:10 PM</p>
-              </div>
-            </li>
-
-            {/* Speaker 6 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 6: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">2:10 PM - 2:40 PM</p>
-              </div>
-              <div className="order-1 w-5/12"></div>
-            </li>
-
-            {/* Speaker 7 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 7: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">2:40 PM - 3:10 PM</p>
-              </div>
-            </li>
-
-            {/* Break */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Break</h3>
-                <p className="mt-1 text-sm">3:10 PM - 3:40 PM</p>
-              </div>
-              <div className="order-1 w-5/12"></div>
-            </li>
-
-            {/* Speaker 8 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 8: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">3:40 PM - 4:20 PM</p>
-              </div>
-            </li>
-
-            {/* Speaker 9 */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Speaker 9: [Speaker Name]</h3>
-                <p className="mt-1 text-sm">4:20 PM - 5:00 PM</p>
-              </div>
-              <div className="order-1 w-5/12"></div>
-            </li>
-
-            {/* Closing Remarks */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Closing Remarks</h3>
-                <p className="mt-1 text-sm">5:00 PM - 5:30 PM</p>
-              </div>
-            </li>
-
-            {/* Music Concert */}
-            <li className="timeline-item mb-8 flex justify-between items-center w-full">
-              <div className="order-1 w-5/12 bg-white text-black p-2 rounded-lg shadow-lg text-center">
-                <h3 className="font-bold text-lg">Music Concert</h3>
-                <p className="mt-1 text-sm">5:30 PM - 7:30 PM</p>
-              </div>
-              <div className="order-1 w-5/12"></div>
-            </li>
+          <ul className="relative z-10">
+            {scheduleItems.map((item, index) => (
+              <li key={index} className={`timeline-item mb-8 flex justify-between items-center w-full`}>
+                {index % 2 === 0 ? (
+                  <>
+                    <div className="order-1 w-5/12"></div>
+                    <div className="order-1 w-5/12 border border-white p-4 rounded-lg shadow-lg text-center transition-transform duration-300 hover:scale-105 hover:bg-red-900">
+                      <div className="text-2xl">{item.icon}</div>
+                      <h3 className="font-bold text-lg mt-2">{item.title}</h3>
+                      <p className="mt-1 text-sm">{item.time}</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="order-1 w-5/12 border border-red-500 p-4 rounded-lg shadow-lg text-center transition-transform duration-300 hover:scale-105 hover:bg-red-900">
+                      <div className="text-2xl">{item.icon}</div>
+                      <h3 className="font-bold text-lg mt-2">{item.title}</h3>
+                      <p className="mt-1 text-sm">{item.time}</p>
+                    </div>
+                    <div className="order-1 w-5/12"></div>
+                  </>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
