@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logoImage from '../assets/images/logo.png'; // Import your logo image
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,9 +16,17 @@ const Header = () => {
   return (
     <header className="bg-black text-white fixed top-0 left-0 w-full z-10 shadow-lg">
       <div className="container mx-auto flex items-center justify-between p-4">
+        {/* Logo as an Image */}
         <div className="logo">
-          <h1 className="text-2xl font-bold">TEDx</h1>
+          <Link to="/">
+            <img 
+              src={logoImage} 
+              alt="TEDx Logo" 
+              className="w-32 h-auto" // Adjust width and height of the logo as needed
+            />
+          </Link>
         </div>
+
         <nav>
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 text-lg">
@@ -37,17 +46,16 @@ const Header = () => {
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMobileMenuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 text-gray-400"> {/* Change color here */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 text-gray-400">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 text-gray-400"> {/* Change color here */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 text-gray-400">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
               )}
             </button>
           </div>
-
         </nav>
 
         {/* Mobile Menu */}
