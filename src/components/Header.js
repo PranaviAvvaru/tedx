@@ -31,25 +31,29 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={toggleMobileMenu} className="text-white">
+            <button
+              onClick={toggleMobileMenu}
+              className="transition transform hover:scale-110 focus:outline-none"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
               {isMobileMenuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 text-gray-400"> {/* Change color here */}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 text-gray-400"> {/* Change color here */}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
               )}
             </button>
           </div>
+
         </nav>
 
         {/* Mobile Menu */}
         <ul
-          className={`absolute bg-black bg-opacity-80 top-full left-0 w-full md:hidden space-y-2 p-4 text-lg text-white transition-transform duration-300 ${
-            isMobileMenuOpen ? 'block' : 'hidden'
-          }`}
+          className={`absolute bg-black bg-opacity-80 top-full left-0 w-full md:hidden space-y-2 p-4 text-lg text-white transition-transform duration-300 ${isMobileMenuOpen ? 'block' : 'hidden'
+            }`}
         >
           <li><Link to="/" className="block hover:text-red-500" onClick={handleMenuItemClick}>Home</Link></li>
           <li><Link to="/about" className="block hover:text-red-500" onClick={handleMenuItemClick}>About</Link></li>
