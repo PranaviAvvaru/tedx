@@ -23,11 +23,7 @@ const Schedule = () => {
   return (
     <section className="bg-black text-white py-12 p-3 relative">
       <div className="container mx-auto flex flex-col justify-center h-full">
-<<<<<<< HEAD
         <h2 className="text-4xl font-bold text-red-600 mb-8 text-center">TEDx Event Schedule</h2>
-=======
-        <h2 className="text-4xl text-red-600 font-bold mb-8 text-center">TEDx Event Schedule</h2>
->>>>>>> dc7fc42059d781e8f0fb6a2a8fd9fe2b7ef6dd71
 
         <div className="relative">
           {/* Timeline Line */}
