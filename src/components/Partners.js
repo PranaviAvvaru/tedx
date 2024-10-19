@@ -6,7 +6,7 @@ import randomImage4 from '../assets/images/random.jpg'; // Import another image
 
 const Partners = () => {
   const partners = [
-    { name: "Partner 0", img: randomImage1 },
+    { name: "Partner 1", img: randomImage1 },
     { name: "Partner 2", img: randomImage2 },
     { name: "Partner 3", img: randomImage3 },
     { name: "Partner 4", img: randomImage4 },
