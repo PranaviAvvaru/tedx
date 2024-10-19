@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import tedImage from '../assets/images/ted.webp'; // Ensure this is a high-quality image
+import tedImage from '../assets/images/image.png'; // Ensure this is a high-quality image
 
 const Hero = () => {
   return (
