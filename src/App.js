@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main className="pt-16"> {/* Add padding to avoid overlap with fixed header */}
+      <main className="pt-14"> {/* Add padding to avoid overlap with fixed header */}
         <Routes>
           <Route path="/" element={<><Hero /><Speakers /><Schedule /><Partners /><About /></>} />
           <Route path="/about" element={<About />} />

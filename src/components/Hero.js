@@ -5,7 +5,7 @@ import tedImage from '../assets/images/ted.webp'; // Ensure this is a high-quali
 
 const Hero = () => {
   return (
-    <section className="hero bg-black text-white h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="hero bg-black text-white m-0 h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -29,7 +29,7 @@ const Hero = () => {
       >
         {/* Adjusted font sizes for different screen sizes */}
         <h1 className="text-3xl text-red-600 sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-lg">
-          TEDx SV University
+          TEDx SriVenkateswaraU
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl mb-6 drop-shadow-md">
           Uncharted Waters
