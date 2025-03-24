@@ -1,37 +1,65 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const navLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Speakers', path: '/speakers' },
+  { name: 'Schedule', path: '/schedule' },
+  { name: 'Partners', path: '/partners' },
+  { name: 'Contact', path: '/contact' },
+];
+
+const headerVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const mobileMenuVariants = {
+  hidden: { opacity: 0, height: 0 },
+  visible: { opacity: 1, height: 'auto', transition: { duration: 0.3 } },
+};
 
 const Header = () => {
-  // State to toggle mobile menu visibility
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Function to toggle the mobile menu
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className="bg-black text-white fixed top-0 mb-16 left-0 w-full z-10 shadow-lg">
+    <motion.header
+      className="bg-black text-white fixed top-0 left-0 w-full z-50 shadow-lg"
+      initial="hidden"
+      animate="visible"
+      variants={headerVariants}
+    >
       <div className="container mx-auto flex items-center justify-between p-4">
-        {/* Text-based Logo */}
-        <div className="logo">
-          <Link to="/" className="flex flex-col">
-            <div className="flex items-center space-x-2">
-              {/* "TED" in red */}
-              <span className="text-red-600 font-bold text-xl">TED-X</span>
-              
-              {/* "SriVenkateswaraU" in white */}
-              <span className="text-white font-bold text-xl">SriVenkateswaraU</span>
-            </div>
-            {/* Subtitle text */}
-            
-          </Link>
-        </div>
+        {/* Logo and Tagline */}
+        <Link to="/" className="flex flex-col">
+          <div className="flex items-center space-x-2">
+            <span className="text-red-600 font-bold text-xl">TED-X</span>
+            <span className="text-white font-bold text-xl">SriVenkateswaraU</span>
+          </div>
+          <span className="text-sm text-gray-400">Ideas Worth Spreading</span>
+        </Link>
 
-        {/* Hamburger Icon for small screens */}
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-6 text-lg">
+          {navLinks.map((link, idx) => (
+            <Link
+              key={idx}
+              to={link.path}
+              className="hover:text-red-500 transition-colors duration-300"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Hamburger Icon for Mobile */}
         <button
           className="md:hidden text-white focus:outline-none"
           onClick={toggleMobileMenu}
+          aria-label="Toggle Mobile Menu"
         >
           <svg
             className="w-6 h-6"
@@ -44,39 +72,39 @@ const Header = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+              d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
             />
           </svg>
         </button>
-
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-6 text-lg">
-          <ul className="flex space-x-6">
-            <li><Link to="/" className="hover:text-red-500">Home</Link></li>
-            <li><Link to="/about" className="hover:text-red-500">About</Link></li>
-            <li><Link to="/speakers" className="hover:text-red-500">Speakers</Link></li>
-            
-            <li><Link to="/schedule" className="hover:text-red-500">Schedule</Link></li>
-            <li><Link to="/partners" className="hover:text-red-500">Partners</Link></li>
-            <li><Link to="/contact" className="hover:text-red-500">Contact</Link></li>
-          </ul>
-        </nav>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden absolute top-16 left-0 w-full bg-black text-white shadow-lg">
-            <ul className="flex flex-col space-y-4 p-4">
-              <li><Link to="/" className="hover:text-red-500">Home</Link></li>
-              <li><Link to="/about" className="hover:text-red-500">About</Link></li>
-              <li><Link to="/speakers" className="hover:text-red-500">Speakers</Link></li>
-              <li><Link to="/schedule" className="hover:text-red-500">Schedule</Link></li>
-              <li><Link to="/partners" className="hover:text-red-500">Partners</Link></li>
-              <li><Link to="/contact" className="hover:text-red-500">Contact</Link></li>
-            </ul>
-          </nav>
-        )}
       </div>
-    </header>
+
+      {/* Mobile Menu with AnimatePresence */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.nav
+            className="md:hidden bg-black text-white shadow-lg"
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={mobileMenuVariants}
+          >
+            <ul className="flex flex-col space-y-4 p-4">
+              {navLinks.map((link, idx) => (
+                <li key={idx}>
+                  <Link
+                    to={link.path}
+                    className="hover:text-red-500 transition-colors duration-300"
+                    onClick={toggleMobileMenu}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 

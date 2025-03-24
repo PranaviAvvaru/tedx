@@ -1,74 +1,110 @@
 import React from "react";
 import { motion } from "framer-motion";
-import randomImage1 from "../assets/images/random.jpg"; // Import image
-import randomImage2 from "../assets/images/random.jpg"; // Import another image
-import randomImage3 from "../assets/images/random.jpg"; // Import image
-import randomImage4 from "../assets/images/random.jpg"; // Import another image
-import randomImage5 from "../assets/images/random.jpg"; // Import image
-import randomImage6 from "../assets/images/random.jpg"; // Import another image
+import defaultImage from "../assets/images/random.jpg"; // Fallback image
+import priyanka  from "../assets/images/priyanka.jpeg";
+import vvlakshmi  from "../assets/images/vvlaksmi.jpg";
+import jahnavi from "../assets/images/Jahnavi-Dangeti.jpg";
+import vidhya  from "../assets/images/vidya.jpeg";
+import abdus from "../assets/images/abdus.jpeg";
+import punit  from "../assets/images/punit.jpeg";
+
+const speakers = [
+  {
+    name: "V.V. Lakshmi Narayana",
+    bio: "Former IPS officer & social reformer.",
+    img: vvlakshmi,
+  },
+  {
+    name: "Jahnavi Dangeti",
+    bio: "Aspiring astronaut & aerospace engineer.",
+    img: jahnavi,
+  },
+  {
+    name: "Vidhya Sagar",
+    bio: "Product Manager & Innovation Leader.",
+    img: vidhya,
+  },
+  {
+    name: "Abdus Samad",
+    bio: "Professor at IIT Madras, expert in marine energy.",
+    img:  abdus,
+  },
+  {
+    name: "Punit Chawla",
+    bio: "UX Designer & Digital Experience Innovator.",
+    img: punit,
+  },
+  {
+    name: "Priyanka Gandhavalla",
+    bio: "Founder & CEO, AI Health-Tech Innovator.",
+    img: priyanka,
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0, translateY: 50 },
+  visible: {
+    opacity: 1,
+    translateY: 0,
+    transition: { duration: 0.8, staggerChildren: 0.2 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+};
 
 const Speakers = () => {
-  const speakers = [
-    {
-      name: "Speaker 1",
-      bio: "An expert in innovative ideas.",
-      img: randomImage1,
-    },
-    {
-      name: "Speaker 2",
-      bio: "A leader in global tech solutions.",
-      img: randomImage2,
-    },
-    {
-      name: "Speaker 3",
-      bio: "Innovator in the field of AI.",
-      img: randomImage3,
-    },
-    {
-      name: "Speaker 4",
-      bio: "Pioneer of sustainable technology.",
-      img: randomImage4,
-    },
-    { name: "Speaker 5", bio: "Expert in data science.", img: randomImage5 },
-    { name: "Speaker 6", bio: "Leader in cybersecurity.", img: randomImage6 },
-  ];
-
   return (
-    <section className="bg-black text-white py-12 px-3">
+    <motion.section
+      className="bg-black text-white py-12 px-6"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
+    >
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl text-red-600 font-bold mb-8">Meet Our Speakers</h2>
+        <motion.h2
+          className="text-3xl sm:text-4xl text-red-600 font-bold mb-12"
+          variants={cardVariants}
+        >
+          Meet Our Speakers
+        </motion.h2>
 
-        <div className="grid   grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5  gap-12">
+        {/* Responsive Grid Layout */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+        >
           {speakers.map((speaker, index) => (
             <motion.div
               key={index}
-              className=" relative  overflow-hidden transition-shadow  duration-300 rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600 
-              h-96 "
-              initial={{ opacity: 0, translateY: 20 }} // Initial state for animation
-              animate={{ opacity: 1, translateY: 0 }} // Animation state
-              transition={{ duration: 0.5, delay: index * 0.1 }} // Delay based on index for staggered effect
+              className="relative overflow-hidden rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600 transition-transform duration-300"
+              variants={cardVariants}
+              whileHover={{ scale: 1.05 }}
             >
-              <img
-                src={speaker.img}
+              {/* Speaker Image */}
+              <motion.img
+                src={speaker.img || defaultImage}
                 alt={speaker.name}
-                className=" w-full h-full object-cover rounded-lg mb-2 transition-transform group-hover:scale-110 duration-200 "
+                className="w-full h-80 object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
               />
-              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75 to-transparent ">
-                <div className="p-4 text-white  text-center  group-hover:bg-gradient-to-br w-full">
-                  <h3 className=" text-xl font-xl mb-4 group-hover:font-semibold ">
-                    {speaker.name}
-                  </h3>
-                  <hr className="invisible  group-hover:visible" />
-                  <p className="  text-gray-300  group-hover:text-lg">
-                    {speaker.bio}
-                  </p>
-                </div>
+
+              {/* Speaker Info Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
+                <motion.div
+                  className="p-4 w-full text-center bg-black/50 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                  <h3 className="text-lg font-bold">{speaker.name}</h3>
+                  <p className="text-sm text-gray-300">{speaker.bio}</p>
+                </motion.div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

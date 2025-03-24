@@ -1,46 +1,88 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import tedImage from '../assets/images/image.png'; // Ensure this is a high-quality image
 
 const Hero = () => {
-  return (
-    <section className="hero bg-black text-white m-0 h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${tedImage})`,
-          backgroundSize: 'cover', // Ensure the image covers the section fully
-          backgroundPosition: 'center', // Center the image
-          backgroundRepeat: 'no-repeat', // Prevent tiling of the background image
-        }}
-        aria-hidden="true" // This element is purely decorative
-      >
-        <div className="bg-black bg-opacity-30 h-full w-full"></div> {/* Darker overlay for better text visibility */}
-      </div>
+  const calculateTimeLeft = () => {
+    const eventDate = new Date("April 13, 2025 00:00:00").getTime();
+    const now = new Date().getTime();
+    const timeLeft = eventDate - now;
 
+    return {
+      days: Math.floor(timeLeft / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((timeLeft / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((timeLeft / (1000 * 60)) % 60),
+      seconds: Math.floor((timeLeft / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="hero bg-black text-white h-screen flex flex-col items-center justify-center px-4 sm:px-8">
       <motion.div
-        className="hero-content text-center relative z-10 p-4" // Added padding for better spacing on mobile
-        initial={{ opacity: 0, translateY: 20 }} // Initial state for animation
-        animate={{ opacity: 1, translateY: 0 }} // Animation state
-        exit={{ opacity: 0, translateY: -20 }} // Exit animation state
-        transition={{ duration: 0.5 }} // Animation duration
+        className="hero-content text-center w-full max-w-4xl"
+        initial={{ opacity: 0, translateY: 20 }}
+        animate={{ opacity: 1, translateY: 0 }}
+        exit={{ opacity: 0, translateY: -20 }}
+        transition={{ duration: 0.5 }}
       >
-        {/* Adjusted font sizes for different screen sizes */}
-        <h1 className="text-3xl text-red-600 sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-lg">
+        {/* Title */}
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-red-600 mb-4">
           TEDx SriVenkateswaraU
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl mb-6 drop-shadow-md">
-          Uncharted Waters
+
+        {/* Theme Name & Description */}
+        <p className="text-lg sm:text-xl md:text-2xl font-semibold italic text-gray-300 mb-2">
+          "Uncharted Waters"
         </p>
-        <Link
-          to="/select-seats"
-          className="bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg transform hover:scale-105"
-          aria-label="Register Now" // Accessible label for screen readers
-        >
-          Register Now
-        </Link>
+        <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-6">
+          Exploring the unknown—where curiosity meets courage, and challenges lead to discovery.
+        </p>
+
+        {/* Event Date & Venue */}
+        <p className="text-md sm:text-lg md:text-xl text-white font-medium mb-6">
+          📅 April 13, 2025 | 📍 Srinivasa Auditorium
+        </p>
+
+        {/* Countdown Timer */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-lg font-bold text-red-500 mb-6">
+          {Object.entries(timeLeft).map(([unit, value]) => (
+            <div key={unit} className="p-2 bg-white text-black rounded-lg shadow-md min-w-[70px] text-center">
+              {value} <span className="text-sm block">{unit.charAt(0).toUpperCase() + unit.slice(1)}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Fixed CTA Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 w-full">
+          <motion.div whileHover={{ scale: 1.1 }} className="w-full sm:w-auto">
+            <Link
+              to="/register"
+              className="bg-red-500 text-white w-full sm:w-auto text-center py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg block"
+              aria-label="Register Now"
+            >
+              Register Now
+            </Link>
+          </motion.div>
+
+          <motion.div whileHover={{ scale: 1.1 }} className="w-full sm:w-auto">
+            <Link
+              to="/sponsor"
+              className="bg-transparent border border-red-500 text-red-500 w-full sm:w-auto text-center py-3 px-6 rounded-lg hover:bg-red-500 hover:text-white transition-colors duration-300 shadow-lg block"
+              aria-label="Become a Sponsor"
+            >
+              Become a Sponsor
+            </Link>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );

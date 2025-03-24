@@ -3,21 +3,17 @@ import { FaMusic, FaUserAlt, FaCoffee } from 'react-icons/fa';
 
 const Schedule = () => {
   const scheduleItems = [
-    { title: "Welcome", time: "9:00 AM - 9:40 AM", icon: <FaUserAlt /> },
-    { title: "Speaker 1: [Speaker Name]", time: "9:40 AM - 10:10 AM", icon: <FaUserAlt /> },
-    { title: "Speaker 2: [Speaker Name]", time: "10:10 AM - 10:40 AM", icon: <FaUserAlt /> },
-    { title: "Speaker 3: [Speaker Name]", time: "10:40 AM - 11:10 AM", icon: <FaUserAlt /> },
-    { title: "Break", time: "11:10 AM - 11:40 AM", icon: <FaCoffee /> },
-    { title: "Speaker 4: [Speaker Name]", time: "11:40 AM - 12:10 PM", icon: <FaUserAlt /> },
-    { title: "Speaker 5: [Speaker Name]", time: "12:10 PM - 12:40 PM", icon: <FaUserAlt /> },
-    { title: "Lunch Break", time: "12:40 PM - 2:10 PM", icon: <FaCoffee /> },
-    { title: "Speaker 6: [Speaker Name]", time: "2:10 PM - 2:40 PM", icon: <FaUserAlt /> },
-    { title: "Speaker 7: [Speaker Name]", time: "2:40 PM - 3:10 PM", icon: <FaUserAlt /> },
-    { title: "Break", time: "3:10 PM - 3:40 PM", icon: <FaCoffee /> },
-    { title: "Speaker 8: [Speaker Name]", time: "3:40 PM - 4:20 PM", icon: <FaUserAlt /> },
-    { title: "Speaker 9: [Speaker Name]", time: "4:20 PM - 5:00 PM", icon: <FaUserAlt /> },
-    { title: "Closing Remarks", time: "5:00 PM - 5:30 PM", icon: <FaUserAlt /> },
-    { title: "Music Concert", time: "5:30 PM - 7:30 PM", icon: <FaMusic /> },
+    { title: "Welcome & Opening Remarks", time: "9:00 AM - 9:15 AM", icon: <FaUserAlt /> },
+    { title: "V.V. Lakshmi Narayana", time: "9:15 AM - 9:45 AM", icon: <FaUserAlt /> },
+    { title: "Jahnavi Dangeti", time: "9:45 AM - 10:15 AM", icon: <FaUserAlt /> },
+    { title: "Vidhya Sagar", time: "10:15 AM - 10:45 AM", icon: <FaUserAlt /> },
+    { title: "Break", time: "10:45 AM - 11:00 AM", icon: <FaCoffee /> },
+    { title: "Abdus Samad", time: "11:00 AM - 11:30 AM", icon: <FaUserAlt /> },
+    { title: "Punit Chawla", time: "11:30 AM - 12:00 PM", icon: <FaUserAlt /> },
+    { title: "Lunch Break", time: "12:00 PM - 1:00 PM", icon: <FaCoffee /> },
+    { title: "Priyanka Gandhavalla", time: "1:00 PM - 1:30 PM", icon: <FaUserAlt /> },
+    { title: "Closing Remarks", time: "1:30 PM - 2:00 PM", icon: <FaUserAlt /> },
+    { title: "Music Concert", time: "2:00 PM - 3:00 PM", icon: <FaMusic /> },
   ];
 
   return (

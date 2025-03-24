@@ -8,6 +8,7 @@ import Schedule from './components/Schedule';
 import Partners from './components/Partners';
 import Footer from './components/Footer';
 import SeatSelection from './components/SeatSelection';
+import Contact from './components/contact';
 
 const App = () => {
   return (
@@ -21,6 +22,9 @@ const App = () => {
           <Route path="/schedule" element={<Schedule />} /> {/* Add this line for Schedule */}
           <Route path="/partners" element={<Partners />} /> {/* Add this line for Partners */}
           <Route path="/select-seats" element={<SeatSelection />} />
+          <Route path="/contact" element={<Contact /> } />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
+          
         </Routes>
       </main>
       <Footer />
